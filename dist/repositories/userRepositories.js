@@ -39,7 +39,7 @@ function FindByEmail(email) {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, connectionDb.query("\n        SELECT u.id,u.name,u.password,u.email\n        FROM users u\n        WHERE email=$1\n    ", [email])];
+                case 0: return [4 /*yield*/, connectionDb.query("\n        SELECT u.id,u.name,u.email\n        FROM users u\n        WHERE email=$1\n    ", [email])];
                 case 1: return [2 /*return*/, _a.sent()];
             }
         });

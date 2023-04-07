@@ -1,6 +1,6 @@
 import { QueryResult } from "pg"
-import connectionDb from "../config/database"
-import { CharPoints, NewChar } from "../protocols/char"
+import connectionDb from "../config/database.js"
+import { CharPoints, NewChar } from "../protocols/char.js"
 
 async function getAll(): Promise<QueryResult<any>>{
     return await connectionDb.query(
@@ -9,8 +9,6 @@ async function getAll(): Promise<QueryResult<any>>{
         `
     )
 }
-
-
 
 async function findByNickname(nickname:string): Promise<QueryResult<any>>{
     return await connectionDb.query(
@@ -35,12 +33,8 @@ async function createChar(char: NewChar): Promise<QueryResult<any>>{
             (nickname,race,perks,strenght,vitality,intelligence)
         VALUES ($1,$2,$3,$4,$5,$6)
         `
-    ,[char.nickname,
-      char.race,
-      char.perks,
-      char.strenght,
-      char.vitality,
-      char.intelligence])
+    ,[char.nickname,char.race,char.perks,char.strenght,char.vitality,char.intelligence]
+    )
 }
 
 async function updateChar(id:number,points: CharPoints): Promise<QueryResult<any>>{

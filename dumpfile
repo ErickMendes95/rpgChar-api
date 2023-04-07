@@ -26,7 +26,6 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.chars (
     id integer NOT NULL,
-    user_id integer NOT NULL,
     nickname character varying(255) NOT NULL,
     race character varying(255) NOT NULL,
     perks character varying(255) NOT NULL,

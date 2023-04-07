@@ -34,9 +34,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import userRepositories from "../repositories/userRepositories";
+import userRepositories from "../repositories/userRepositories.js";
 import bcrypt from "bcrypt";
-import errors from "../errors";
+import errors from "../errors/index.js";
 import jwt from "jsonwebtoken";
 function signin(user) {
     return __awaiter(this, void 0, void 0, function () {
@@ -48,7 +48,9 @@ function signin(user) {
                     userExist = _a.sent();
                     if (!userExist)
                         throw errors.notFoundError();
-                    validPassword = bcrypt.compareSync(user.password, userExist.rows[0].password);
+                    return [4 /*yield*/, bcrypt.compare(user.password, userExist.rows[0].password)];
+                case 2:
+                    validPassword = _a.sent();
                     if (!validPassword)
                         throw errors.invalidCredentialsError();
                     userId = userExist.rows[0].id;

@@ -70,7 +70,8 @@ function createNewChar(char) {
                 case 0: return [4 /*yield*/, charRepositories.findByNickname(char.nickname)];
                 case 1:
                     charExist = _a.sent();
-                    if (charExist)
+                    console.log(charExist);
+                    if (charExist.rowCount)
                         throw errors.ConflictError();
                     return [4 /*yield*/, charRepositories.createChar(char)];
                 case 2:

@@ -34,7 +34,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import userServices from "../services/charServices.js";
+import charServices from "../services/charServices.js";
+import httpStatus from "http-status";
 function getAllChars(req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
         var allChars, error_1;
@@ -42,7 +43,7 @@ function getAllChars(req, res, next) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, userServices.getAll()];
+                    return [4 /*yield*/, charServices.getAll()];
                 case 1:
                     allChars = _a.sent();
                     res.send(allChars);
@@ -66,7 +67,7 @@ function getChar(req, res, next) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, userServices.getChar(id)];
+                    return [4 /*yield*/, charServices.getChar(id)];
                 case 2:
                     char = _a.sent();
                     res.send(char);
@@ -82,7 +83,7 @@ function getChar(req, res, next) {
 }
 function createChar(req, res, next) {
     return __awaiter(this, void 0, void 0, function () {
-        var char, created, error_3;
+        var char, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -90,9 +91,10 @@ function createChar(req, res, next) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, userServices.createNewChar(char)];
+                    return [4 /*yield*/, charServices.createNewChar(char)];
                 case 2:
-                    created = _a.sent();
+                    _a.sent();
+                    res.status(httpStatus.CREATED).send("Char created successfully");
                     return [3 /*break*/, 4];
                 case 3:
                     error_3 = _a.sent();
@@ -114,7 +116,7 @@ function updateChar(req, res, next) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, userServices.updatePoints(id, points)];
+                    return [4 /*yield*/, charServices.updatePoints(id, points)];
                 case 2:
                     updated = _a.sent();
                     res.send(updated);
@@ -138,7 +140,7 @@ function deleteChar(req, res, next) {
                     _a.label = 1;
                 case 1:
                     _a.trys.push([1, 3, , 4]);
-                    return [4 /*yield*/, userServices.deleteChar(id)];
+                    return [4 /*yield*/, charServices.deleteChar(id)];
                 case 2:
                     _a.sent();
                     res.send("Character deleted");

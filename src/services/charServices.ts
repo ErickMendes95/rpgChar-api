@@ -17,7 +17,8 @@ async function getChar(id:number){
 async function createNewChar(char: NewChar){
 
     const charExist = await charRepositories.findByNickname(char.nickname);
-    if(charExist) throw errors.ConflictError();
+    console.log(charExist)
+    if(charExist.rowCount) throw errors.ConflictError();
 
     await charRepositories.createChar(char)    
 }

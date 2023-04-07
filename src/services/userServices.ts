@@ -1,19 +1,20 @@
-import userRepositories from "../repositories/userRepositories"
+import userRepositories from "../repositories/userRepositories.js"
 import bcrypt from "bcrypt"
-import errors from "../errors"
+import errors from "../errors/index.js"
 import jwt from "jsonwebtoken"
-import { SignIn, SignUp } from "../protocols/user"
+import { SignIn, SignUp } from "../protocols/user.js"
 
 async function signin(user: SignIn){
     
     const userExist = await userRepositories.FindByEmail(user.email)
     if(!userExist) throw errors.notFoundError();
 
-    const validPassword = bcrypt.compareSync(user.password,userExist.rows[0].password)
+    const validPassword = await bcrypt.compare(user.password,userExist.rows[0].password)
     if(!validPassword) throw errors.invalidCredentialsError();
 
     const userId = userExist.rows[0].id
     const token = jwt.sign({userId},process.env.JWT_SECRET,{expiresIn: 86400});
+    
     return token;
 
 }

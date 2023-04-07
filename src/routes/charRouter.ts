@@ -4,10 +4,10 @@ import {authValidation} from "../middleware/authMiddleware.js"
 
 const charRouter = Router()
 
-charRouter.get("/allChars",getAllChars)
+charRouter.get("/allchars",getAllChars)
 charRouter.get("/char/:id",getChar)
-charRouter.post("/char/createChar",authValidation,createChar)
-charRouter.put("/char/:id/updateChar",authValidation,updateChar)
-charRouter.delete("/char/:id/deleteChar",authValidation,deleteChar)
+charRouter.post("/char/createchar",authValidation,createChar)
+charRouter.put("/char/:id/updatechar",authValidation,updateChar)
+charRouter.delete("/char/:id/deletechar",authValidation,deleteChar)
 
 export default charRouter

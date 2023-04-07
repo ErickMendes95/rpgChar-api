@@ -5,13 +5,13 @@ async function FindByEmail(email:string): Promise<QueryResult<any>>{
 
     return await connectionDb.query(
     `
-        SELECT u.id,u.name,u.password,u.email
+        SELECT u.id,u.name,u.email
         FROM users u
         WHERE email=$1
     `,[email])
 }
 
-async function CreateUser(name,email,hashpassword): Promise<QueryResult<any>>{
+async function CreateUser(name:string,email:string,hashpassword:string): Promise<QueryResult<any>>{
 
     return await connectionDb.query(
     `

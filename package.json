@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "",
-  "main": "app.ts",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon src/app.ts"
+    "start": "nodemon dist/app.js"
   },
   "keywords": [],
   "author": "",
